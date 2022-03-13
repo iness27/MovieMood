@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://cdn4.iconfinder.com/data/icons/video-and-camera-1/100/35-512.png"
+            height="40"
+            alt=""
+            loading="lazy" />
+        </a>
+        <a class="navbar-brand" href="/home">MovieMood</a>
+    </div>
+
+    <div class="container-fluid">
+      
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-expanded="false"
+        aria-label="Toggle navigation" >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div
+        class="collapse navbar-collapse"
+        id="navbarNavAltMarkup"
+        mdbCollapse >
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/home"> Home </a>
+          <a class="nav-link" href="/upcoming"> Upcoming </a>
+          <a class="nav-link" href="/latest"> Latest </a>
+          <a class="nav-link" href="/mood"> Mood </a>
+          <a *ngIf="showAdminBoard" class="nav-link" href="/adminBoard"> Admin Board </a>
+          <a *ngIf="showModeratorBoard" class="nav-link" href="/moderatorBoard"> Moderator Board </a>
+          <a *ngIf="isLoggedIn" class="nav-link" href="/user"> User </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <form class="d-flex input-group w-auto">
+          <div *ngIf="!isLoggedIn"  class="navbar-nav">
+            <a class="nav-link" href="/register"> Sign Up </a>
+            <a class="nav-link" href="/login"> Login </a>
+          </div>
+          <div *ngIf="isLoggedIn" class="navbar-nav">
+            <a class="nav-link" href="/profile">{{username}} </a>
+            <a class="nav-link"  (click)="logout()">Logout </a>
+          </div>
+        </form>
+      </div>
+  </nav>
+
+
+  <nav class="sidebar card py-2 mb-4" *ngIf="isLoggedIn">
+    <ul class="nav flex-column" id="nav_accordion">
+        <li class="nav-item">
+            <a class="nav-link" href="/genres"> Genres </a>
+        </li>
+        <li class="nav-item has-submenu">
+            <a class="nav-link" href="/watchlists"> Watchlists </a>
+        </li>
+    </ul>
+    </nav>
+
+    <div style="margin-top: 50px;"></div>
